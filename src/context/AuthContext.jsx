@@ -2,6 +2,7 @@ import { createContext, useEffect, useState, useCallback } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
+
 const AuthContext = createContext();
 const API_URL = import.meta.env.VITE_API_URL;
 export default AuthContext;
@@ -38,7 +39,6 @@ export const AuthProvider = ({ children }) => {
           setAuthTokens(data);
           setUser(jwtDecode(data.access));
           localStorage.setItem("authTokens", JSON.stringify(data));
-          alert("Logging in");
           navigate("/dashboard");
         } else {
           alert("Invalid credentials");
